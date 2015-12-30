@@ -32,6 +32,18 @@
             margin: 0;
         }
     }
+    &.panel-dark {
+        background-color: #333;
+        color: white;
+        .panel-heading {
+            background-color: #555;
+            color: #ccc;
+        }
+        .panel-heading,
+        .panel-footer {
+            color: #f1f1f1;
+        }
+    }
     &.shadow {
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
     }
