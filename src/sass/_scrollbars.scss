@@ -1,0 +1,43 @@
+@import 'colors';
+
+@mixin scrollbar-theme($color) {
+    $amt: 20%;
+
+    &::-webkit-scrollbar-track {
+        background-color: darken($color, $amt * 1.5);
+    }
+    &::-webkit-scrollbar-thumb {
+        background-color: $color;
+        border-radius: 0;
+    }
+    &::-webkit-scrollbar-thumb:hover {
+        background-color: lighten($color, $amt);
+    }
+    &::-webkit-scrollbar-corner {
+        background-color: darken($color, $amt * 1.5);
+    }
+}
+
+.scroll {
+    $thickness: 10px;
+
+    &::-webkit-scrollbar {
+        width: $thickness;
+    }
+    &::-webkit-scrollbar:vertical {
+        width: $thickness;
+    }
+    &::-webkit-scrollbar:horizontal {
+        height: $thickness;
+    }
+    &::-webkit-scrollbar-thumb {
+        border-radius: 0;
+    }
+}
+
+// meant to be attached to html: <html class="scroll-color"></html>
+@each $color, $hex in $all_colors {
+    .scroll.scroll-#{$color} {
+        @include scrollbar-theme($hex);
+    }
+}

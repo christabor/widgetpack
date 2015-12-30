@@ -3,23 +3,23 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, maximum-scale=1">
-    <title>Widgetpack CSS/HTML widgets.</title>
+    <title>Widgetpack CSS/HTML widgets and styles.</title>
     <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="css/vendor/flexbox-grid.min.css">
     <link href="dist/widgetpack.min.css" rel="stylesheet">
     <style>
     body {
         font-family: 'Lato', sans-serif;
-        font-size: 20px;
         padding: 0;
         margin: 0;
     }
     h1 {
-        font-size: 60px;
+        font-size: 65px;
         font-weight: 100;
-        margin-bottom: 0;
+        margin-bottom: 0.5em;
     }
-    h1 small, h2 small {
+    h1 small,
+    h2 small {
         font-weight: 200;
         opacity: 0.5;
     }
@@ -32,6 +32,9 @@
     ul {
         font-size: 16px;
         line-height: 30px;
+    }
+    .section {
+        margin-top: 1em;
     }
     .container {
         width: 80%;
@@ -50,6 +53,23 @@
         font-weight: 100;
         border-bottom: 1px dotted #ccc;
     }
+    code {
+        font-family: source code pro, consolas, fixed-width;
+        background-color: #EBCCD5;
+        color: #C91738;
+        display: inline-block;
+        tab-size: 0;
+        font-size: 11px;
+        margin: 0.4em auto;
+        padding: 5px 10px;
+        border-radius: 5px;
+    }
+    .scroll {
+        height: 200px;
+        margin-bottom: 2em;
+        display: inline-block;
+        overflow-y: scroll;
+    }
     @media handheld, screen and (max-width: 700px) {
         .container {
             margin: 0.4em;
@@ -66,114 +86,22 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1>Widgetpack <small>A set of misc. UI widgets.</small></h1>
+                <h1>Widgetpack <small>A set of misc. UI widgets and styles.</small></h1>
             </div>
         </div>
     </div>
     <hr>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <h2>CSS bullets <small>A bunch of css bullet styles.</small></h2>
-                <p>Also includes <span class="under">active</span> <span class="amp">&amp;</span> <span class="under">hover</span> styles!</p>
-                <hr>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-xs-12 col-md-4">
-                <h3>Light square</h3>
-                <ul class="bullets light-square">
-                    <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
-                    <li>Aliquam tincidunt mauris eu risus.</li>
-                    <li>Vestibulum auctor dapibus neque.</li>
-                    <li>Consectetuer adipiscing elit.</li>
-                </ul>
-            </div>
-            <div class="col-xs-12 col-md-4">
-                <h3>Circular bullets</h3>
-                <ul class="bullets light-circle">
-                    <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
-                    <li>Aliquam tincidunt mauris eu risus.</li>
-                    <li>Vestibulum auctor dapibus neque.</li>
-                    <li>Consectetuer adipiscing elit.</li>
-                </ul>
-            </div>
-            <div class="col-xs-12 col-md-4">
-                <h3>Hollow square</h3>
-                <ul class="bullets light-square hollow">
-                    <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
-                    <li>Aliquam tincidunt mauris eu risus.</li>
-                    <li>Vestibulum auctor dapibus neque.</li>
-                    <li>Consectetuer adipiscing elit.</li>
-                </ul>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-4">
-                <h3>Hollow circle</h3>
-                <ul class="bullets light-circle hollow">
-                    <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
-                    <li>Aliquam tincidunt mauris eu risus.</li>
-                    <li>Vestibulum auctor dapibus neque.</li>
-                    <li>Consectetuer adipiscing elit.</li>
-                </ul>
-            </div>
-            <div class="col-md-4">
-                <h3>Shadowed *dimples* inset</h3>
-                <ul class="bullets light-circle dimple inset">
-                    <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
-                    <li>Aliquam tincidunt mauris eu risus.</li>
-                    <li>Vestibulum auctor dapibus neque.</li>
-                    <li>Consectetuer adipiscing elit.</li>
-                </ul>
-            </div>
-            <div class="col-md-4">
-                <h3>Shadowed *dimples*</h3>
-                <ul class="bullets light-circle dimple">
-                    <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
-                    <li>Aliquam tincidunt mauris eu risus.</li>
-                    <li>Vestibulum auctor dapibus neque.</li>
-                    <li>Consectetuer adipiscing elit.</li>
-                </ul>
-            </div>
-        </div>
-        <h3>All styles come in various colors:</h3>
-        <div class="row">
-            <div class="col-md-4">
-                <ul class="bullets yellow light-circle hollow">
-                    <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
-                    <li>Consectetuer adipiscing elit.</li>
-                </ul>
-                <ul class="bullets orange light-circle hollow">
-                    <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
-                    <li>Consectetuer adipiscing elit.</li>
-                </ul>
-            </div>
-            <div class="col-md-4">
-                <ul class="bullets red light-circle hollow">
-                    <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
-                    <li>Consectetuer adipiscing elit.</li>
-                </ul>
-                <ul class="bullets purple light-circle hollow">
-                    <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
-                    <li>Consectetuer adipiscing elit.</li>
-                </ul>
-                <ul class="bullets pink light-circle hollow">
-                    <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
-                    <li>Consectetuer adipiscing elit.</li>
-                </ul>
-            </div>
-            <div class="col-md-4">
-                <ul class="bullets blue light-circle hollow">
-                    <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
-                    <li>Consectetuer adipiscing elit.</li>
-                </ul>
-                <ul class="bullets green light-circle hollow">
-                    <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
-                    <li>Consectetuer adipiscing elit.</li>
-                </ul>
-            </div>
-        </div>
-    </div>
+    <div id="helpers" class="loader"></div>
+    <div id="scroll" class="loader"></div>
+    <div id="bullets" class="loader"></div>
+    <div id="flipt" class="loader"></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('.loader').each(function(k, el){
+                $(this).load('examples/' + $(el).attr('id') + '.html');
+            });
+        });
+    </script>
 </body>
 </html>

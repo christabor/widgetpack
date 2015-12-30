@@ -1,0 +1,202 @@
+@import 'mixins';
+@import 'colors';
+
+$base-padding-x: 6px;
+$base-padding-y: $base-padding-x * 2;
+$base-font-size: 14px;
+$default-margin: 5px;
+$border-thickness: 3px;
+
+@mixin btn-hollow-style($color1: $default) {
+	border: $border-thickness solid $color1;
+	color: $color1;
+	background-color: transparent;
+	&:hover {
+		color: lighten($color1, 10%);
+		border-color: lighten($color1, 10%);
+	}
+	&.to-dark:hover {
+		color: darken($color1, 10%);
+		border-color: darken($color1, 10%);
+	}
+}
+@mixin btn-flat-style($color1: $default) {
+	background-color: $color1;
+	color: #ffffff;
+	border-color: darken($color1, 20%);
+	&:hover {
+		color: white;
+		background-color: lighten($color1, 10%);
+	}
+	&.to-dark:hover {
+		background-color: darken($color1, 10%);
+	}
+}
+@mixin btn-zen-style($color1: $default) {
+	@include gradient($color1, darken($color1, 20%));
+	color: #fff;
+	text-shadow: 0 0 2px lighten($color1, 20%);
+	border-color: darken($color1, 20%);
+	&:hover {
+		color: white;
+		@include gradient(lighten($color1, 5%), lighten($color1, 10%));
+		text-shadow: 0 0 2px lighten($color1, 10%);
+	}
+	&.to-dark:hover {
+		@include gradient(darken($color1, 5%), darken($color1, 10%));
+		text-shadow: 0 0 2px darken($color1, 10%);
+	}
+}
+@mixin btn-glitz-style($color1: $default) {
+	@include gradient($color1, darken($color1, 20%));
+	color: #fff;
+	text-shadow: 1px 1px 2px darken($color1, 20%);
+	box-shadow: 0 0 10px lighten($color1, 15%), 0 0 10px lighten($color1, 15%);
+	border:1px solid darken($color1, 10%);
+	border-bottom-width: 2px;
+	&:hover {
+		@include gradient(lighten($color1, 5%), lighten($color1, 10%));
+		color: white;
+		text-shadow: 0 0 2px darken($color1, 30%);
+		border-color: lighten($color1, 10%);
+		box-shadow: 0 0 10px lighten($color1, 10%), 0 0 10px lighten($color1, 10%);
+	}
+	&.to-dark:hover {
+		@include gradient(darken($color1, 10%), darken($color1, 20%));
+		text-shadow: 0 0 2px darken($color1, 30%);
+		border-color: darken($color1, 20%);
+		box-shadow:0 0 10px darken($color1, 20%), 0 0 10px darken($color1, 20%);
+	}
+}
+.btn-basic,
+.btn {
+	padding: 4px 8px;
+	display: inline-block;
+	border-radius: 4px;
+	text-decoration: none;
+	&:hover {
+		cursor: pointer;
+	}
+	&.btn-plain {
+		border-bottom: 3px solid #222;
+		background-color: #444;
+		color: white;
+		&:active {
+			position: relative;
+			top: 1px;
+		}
+	}
+	&.btn-plain:hover {
+		background-color: #555;
+		color: white;
+	}
+	&.toggle {
+		-webkit-transition: all .1s ease-in-out;
+		-moz-transition: all .1s ease-in-out;
+		-ms-transition: all .1s ease-in-out;
+		-o-transition: all .1s ease-in-out;
+		transition: all .1s ease-in-out;
+		position: relative;
+		top: 0;
+		background-color: #999;
+		border-bottom: 8px solid #444;
+	}
+	&.toggle:hover {
+		top: 4px;
+		border-bottom-width: 4px;
+	}
+	&.toggle:active {
+		top: 6px;
+		box-shadow: inset 0 0 2px white;
+		border-bottom-width: 2px;
+	}
+}
+.btn {
+	margin: $default-margin $default-margin $default-margin 0;
+	padding: $base-padding-x $base-padding-y;
+	font-size: $base-font-size;
+
+	// reset everything
+	background: none;
+	box-shadow: none;
+	background-repeat: no-repeat;
+	background-position: 0 0;
+	text-shadow: 0 0 0;
+	border:none;
+
+	&.border {
+		border-bottom: $border-thickness solid black;
+	}
+
+	// remove transitions from bootstrap
+	&:hover {
+		@include transition(all, 0s, linear);
+	}
+	&:active {
+		position: relative;
+		top: 2px;
+	}
+	&.btn-block {
+		display: block;
+	}
+	&.btn-xlarge {
+		padding: $base-padding-x * 5 $base-padding-y * 5;
+		font-size: $base-font-size + 8;
+	}
+	&.btn-large {
+		padding: $base-padding-x * 4 $base-padding-y * 4;
+		font-size: $base-font-size + 6;
+	}
+	&.btn-medium {
+		padding: $base-padding-x * 3 $base-padding-y * 3;
+		font-size: $base-font-size + 4;
+	}
+	&.btn-small {
+		padding: $base-padding-x * 2 $base-padding-y * 2;
+		font-size: $base-font-size + 2;
+	}
+	&.btn-xsmall {
+		padding: $base-padding-x $base-padding-y;
+		font-size: $base-font-size - 2;
+	}
+}
+.style-hollow {
+	.btn {
+		@include btn-hollow-style($default);
+	}
+    @each $color, $hex in $all_colors {
+	    .btn-#{$color} {
+	    	@include btn-hollow-style($hex);
+	    }
+	}
+}
+.style-flat {
+	.btn {
+		@include btn-flat-style($default);
+	}
+    @each $color, $hex in $all_colors {
+	    .btn-#{$color} {
+	    	@include btn-flat-style($hex);
+	    }
+	}
+}
+.style-zen {
+	.btn {
+		@include btn-zen-style($default);
+	}
+    @each $color, $hex in $all_colors {
+	    .btn-#{$color} {
+	    	@include btn-zen-style($hex);
+	    }
+	}
+}
+.style-glitz {
+	.btn {
+		@include btn-glitz-style($default);
+	}
+    @each $color, $hex in $all_colors {
+	    .btn-#{$color} {
+	    	@include btn-glitz-style($hex);
+	    }
+	}
+}
