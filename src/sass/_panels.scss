@@ -1,7 +1,7 @@
 @import "colors";
 
 @mixin panel_colors($color) {
-    $hover: darken($color, 10%);
+    $hover: darken($color, 15%);
     $border: darken($color, 10%);
 
     border: 1px solid $border;
@@ -16,6 +16,11 @@
     }
     .panel-footer {
         border-top: 1px solid $hover;
+    }
+    &.grad {
+        .panel-heading {
+            @include gradient($color, darken($color, 20%));
+        }
     }
 }
 
