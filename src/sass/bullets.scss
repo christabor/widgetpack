@@ -1,0 +1,109 @@
+@import "colors";
+
+$mobile-size: 400px;
+$square-size: 6px;
+$circle-size: 6px;
+
+@mixin bullet_colors($color) {
+    $hover: darken($color, 10%);
+    $active: lighten($color, 10%);
+
+    &:hover {
+        color: $hover;
+        &:before {
+            border-color: $hover;
+            background-color: $hover;
+        }
+    }
+    &:active {
+        color: $active;
+        &:before {
+            border-color: $active;
+            background-color: $active;
+        }
+    }
+}
+
+.default-bullet {
+    li {
+        list-style-type: none;
+        position: relative;
+        &:before {
+            border-color: $default;
+            background-color: $default;
+            top: 40% !important;
+            display: block;
+            position: absolute;
+            content: '';
+        }
+        @include bullet_colors($default);
+    }
+}
+ul {
+    &.bullets {
+        padding-left: 0.4em;
+        @extend .default-bullet;
+        @each $color, $hex in $all_colors {
+            &.#{$color} {
+                li {
+                    @include bullet_colors($hex);
+                }
+            }
+        }
+        &.light-square {
+            li {
+                &:before {
+                    width: $square-size;
+                    height: $square-size;
+                    left: -$square-size * 3;
+                }
+            }
+        }
+        &.light-circle {
+            li {
+                padding-left: $circle-size;
+                &:before {
+                    width: $circle-size;
+                    height: $circle-size;
+                    left: -$circle-size * 2.5;
+                    border-radius: 10px;
+                }
+            }
+        }
+        &.hollow {
+            li {
+                &:before {
+                    width: $square-size / 1.2;
+                    height: $square-size / 1.2;
+                    left: -$square-size / 1.2 * 3;
+                    border-width: 2px;
+                    border-style: solid;
+                    background-color: transparent;
+                }
+            }
+        }
+        &.dimple {
+            li {
+                &:before {
+                    width: $circle-size * 1.4;
+                    height: $circle-size * 1.4;
+                    left: -$circle-size * 2;
+                    box-shadow: 0 1px 3px rgba(0, 0, 0, 1);
+                }
+            }
+            &.inset {
+                li {
+                    &:before {
+                        box-shadow: inset 0 1px 4px rgba(0, 0, 0, 1);
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media handheld, screen and (max-width: $mobile-size) {
+    .progress-indicator {
+        font-size: 60%;
+    }
+}
