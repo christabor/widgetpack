@@ -1,0 +1,11 @@
+$radius: 6px;
+
+.rounded {
+    border-radius: $radius;
+}
+.rounded-right {
+    border-radius: 0 $radius $radius 0;
+}
+.rounded-left {
+    border-radius: $radius 0 0 $radius;
+}

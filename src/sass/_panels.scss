@@ -1,0 +1,50 @@
+@import "colors";
+
+@mixin panel_colors($color) {
+    $hover: darken($color, 10%);
+    $border: darken($color, 10%);
+
+    border: 1px solid $border;
+
+    .panel-heading {
+        background-color: $color;
+    }
+    .panel-heading {
+        border-bottom: 1px solid $hover;
+    }
+    .panel-body {
+    }
+    .panel-footer {
+        border-top: 1px solid $hover;
+    }
+}
+
+.panel {
+    display: inline-block;
+
+    > .panel-heading,
+    > .panel-body,
+    > .panel-footer {
+        padding: 0.4em 0.8em;
+    }
+    .panel-heading {
+        h1, h2, h3, h4, h5, h6 {
+            margin: 0;
+        }
+    }
+    &.shadow {
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+    }
+    &.edge {
+        border-right-width: 4px;
+        border-bottom-width: 4px;
+    }
+
+    @include panel_colors(lighten($default, 10%));
+
+    @each $color, $hex in $all_colors {
+        &.panel-#{$color} {
+            @include panel_colors(lighten($hex, 35%));
+        }
+    }
+}
