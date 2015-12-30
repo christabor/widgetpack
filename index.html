@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, maximum-scale=1">
     <title>Widgetpack CSS/HTML widgets and styles.</title>
     <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/vendor/flexbox-grid.min.css">
     <link href="dist/widgetpack.min.css" rel="stylesheet">
     <style>
@@ -77,6 +78,16 @@
         width: 18%;
         margin: 0.4em;
     }
+
+    /*Sidebar demo*/
+
+    .sidebar .icon {
+        font-size: 20px;
+    }
+    .sidebar p {
+        font-size: 12px;
+    }
+
     @media handheld, screen and (max-width: 700px) {
         .container {
             margin: 0.4em;
@@ -98,6 +109,7 @@
         </div>
     </div>
     <hr>
+    <div id="sidebars" class="loader"></div>
     <div id="panels" class="loader"></div>
     <div id="scroll" class="loader"></div>
     <div id="bullets" class="loader"></div>

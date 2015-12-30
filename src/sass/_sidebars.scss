@@ -1,0 +1,113 @@
+@import "colors";
+
+$default: #444;
+$light: #f4f4f4;
+
+@mixin sidebar_colors($hex, $is_dark: true) {
+    > li:hover a,
+    > li.active:hover a {
+        background-color: $hex;
+    }
+    > li.active:hover a {
+        color: darken($hex, 30%);
+    }
+    > li.active a {
+        @if $is_dark {
+            background-color: lighten($hex, 20%);
+            border-color: lighten($hex, 10%);
+        }
+        @else {
+            background-color: darken($hex, 20%);
+            border-color: darken($hex, 20%);
+        }
+        color: white;
+    }
+    > li.active:hover a {
+        @if $is_dark {
+            background-color: lighten($hex, 30%);
+        }
+        @else {
+            background-color: darken($hex, 50%);
+        }
+    }
+    > li.active .icon {
+        color: darken($hex, 10%);
+    }
+    > li.active:hover .icon,
+    > li:hover .icon {
+        color: darken($hex, 30%);
+    }
+}
+
+.sidebar {
+    list-style-type: none;
+    overflow: hidden;
+    min-height: 100%;
+    padding: 0;
+    text-align: center;
+    font-size: 0.8em;
+
+    a {
+        text-decoration: none;
+        color: white;
+    }
+    > li {
+        width: 100%;
+        max-width: 100%;
+    }
+    > li:last-of-type {
+        border-bottom: none;
+    }
+    > li a {
+        padding: 0.8em;
+        display: block;
+        background-color: $default;
+        border-bottom: 1px solid lighten($default, 10%);
+    }
+    > li .caption {
+        margin: 0;
+    }
+    > li:hover .caption.subdue,
+    > li.active .caption.subdue {
+        opacity: 1;
+    }
+    > li.active a {
+        color: black;
+    }
+    > li a:active {
+        position: relative;
+        top: 1px;
+    }
+    .caption {
+        text-transform: uppercase;
+    }
+    .caption.subdue {
+        opacity: 0.4;
+    }
+    .icon {
+        font-size: 2.6em;
+        margin-bottom: 0.3em;
+    }
+
+    // Colors
+
+    @include sidebar_colors($default);
+
+    &.sidebar-light {
+        color: #333;
+        a {
+            color: #333;
+        }
+        > li a {
+            background-color: $light;
+            border-bottom: 1px solid lighten($light, 10%);
+        }
+        @include sidebar_colors($light, false);
+    }
+
+    @each $color, $hex in $all_colors {
+        &.sidebar-#{$color} {
+            @include sidebar_colors($hex);
+        }
+    }
+}
