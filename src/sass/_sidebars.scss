@@ -1,4 +1,5 @@
 @import "colors";
+@import "mixins";
 
 $default: #444;
 $light: #f4f4f4;
@@ -8,8 +9,20 @@ $light: #f4f4f4;
     > li.active:hover a {
         background-color: $hex;
     }
+    &.gradient > li:hover a,
+    &.gradient > li.active:hover a {
+        @include gradient($hex, darken($hex, 20%));
+    }
     > li.active:hover a {
         color: darken($hex, 30%);
+    }
+    &.gradient > li.active a {
+        @if $is_dark {
+            @include gradient($hex, lighten($hex, 20%));
+        }
+        @else {
+            @include gradient($hex, darken($hex, 20%));
+        }
     }
     > li.active a {
         @if $is_dark {
@@ -22,12 +35,20 @@ $light: #f4f4f4;
         }
         color: white;
     }
-    > li.active:hover a {
+    &.gradient > li.active:hover a {
         @if $is_dark {
-            background-color: lighten($hex, 30%);
+            @include gradient($hex, lighten($hex, 30%));
         }
         @else {
-            background-color: darken($hex, 50%);
+            @include gradient($hex, darken($hex, 30%));
+        }
+    }
+    > li.active:hover a {
+        @if $is_dark {
+            @include gradient($hex, lighten($hex, 30%));
+        }
+        @else {
+            @include gradient($hex, darken($hex, 30%));
         }
     }
     > li.active .icon {
@@ -35,7 +56,12 @@ $light: #f4f4f4;
     }
     > li.active:hover .icon,
     > li:hover .icon {
-        color: darken($hex, 30%);
+        @if $is_dark {
+            color: lighten($hex, 40%);
+        }
+        @else {
+            color: darken($hex, 40%);
+        }
     }
 }
 
