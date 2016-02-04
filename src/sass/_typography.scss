@@ -28,3 +28,36 @@ p, ul, ol, dt {
 	font-size: $font-base / 2.5;
 	line-height: $font-base / 1.4;
 }
+
+// Link styles
+
+$link_styles: (
+	double: double,
+	dotted: dotted,
+	dashed: dashed
+);
+
+@mixin border-bottom($thickness, $value) {
+	text-decoration: none;
+	border-bottom: $thickness $value;
+	&:hover {
+		border-bottom: $thickness solid;
+	}
+}
+
+a {
+	&:visited {
+		opacity: 0.7;
+	}
+    @each $class, $value in $link_styles {
+	    &.#{$class}.thin {
+	    	@include border-bottom(1px, $value);
+	    }
+	    &.#{$class}.med {
+	    	@include border-bottom(2px, $value);
+	    }
+	    &.#{$class}.thick {
+	    	@include border-bottom(4px, $value);
+	    }
+	}
+}
