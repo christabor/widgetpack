@@ -11,6 +11,9 @@ $dkstgray: #222;
     text-decoration: none;
     text-align: center;
 }
+.drawer-button {
+    display: none;
+}
 
 // Active
 
@@ -81,9 +84,6 @@ $dkstgray: #222;
             text-decoration: none;
             color: #fff;
         }
-    }
-    .drawer-button {
-        display: none;
     }
     .drawer-button:checked ~ .drawer-toggle.mobile-right {
         left: 0;
