@@ -1,0 +1,131 @@
+@import "colors";
+
+$dkgray: #333;
+$dkstgray: #222;
+
+// Inactive mode
+
+.drawer-toggle {
+    display: none;
+    font-size: 3.4em;
+    text-decoration: none;
+    text-align: center;
+}
+
+// Active
+
+@media handheld, screen and (max-width: 480px) { /* <-- Adjust the breakpoints to your liking */
+    .drawer-toggle,
+    .drawer-menu {
+        background-color: $dkgray;
+        color: white;
+    }
+    .drawer-toggle,
+    .drawer-button,
+    .drawer-menu {
+        top: 0;
+        position: fixed;
+        -webkit-transition: all 0.2s;
+        -moz-transition: all 0.2s;
+        -ms-transition: all 0.2s;
+        -o-transition: all 0.2s;
+        transition: all 0.2s;
+    }
+    .drawer-toggle {
+        margin: 0;
+        display: inline-block;
+        width: 15%;
+        z-index: 999;
+        &:hover {
+            cursor: pointer;
+        }
+        &.mobile-left {
+            left: 0;
+        }
+        &.mobile-right {
+            right: 0;
+        }
+    }
+    .drawer-menu {
+        padding: 0;
+        margin: 0;
+        width: 85%;
+        height: 100%;
+        max-height: 100%;
+        min-height: 100%;
+        z-index: 998;
+        overflow: hidden;
+        &.shadow {
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+        &.mobile-left {
+            left: -105%;
+        }
+        &.mobile-right {
+            right: -105%;
+        }
+        > li {
+            padding: 0.5em;
+            text-align: center;
+            display: block;
+            background-color: $dkstgray;
+            border-bottom: 1px solid #444;
+            &:hover {
+                background-color: darken($dkstgray, 5%);
+            }
+        }
+        > li a {
+            height: 100%;
+            width: 100%;
+            display: inline-block;
+            text-decoration: none;
+            color: #fff;
+        }
+    }
+    .drawer-button {
+        display: none;
+    }
+    .drawer-button:checked ~ .drawer-toggle.mobile-right {
+        left: 0;
+        right: auto;
+    }
+    .drawer-button:checked ~ .drawer-toggle.mobile-left {
+        left: auto;
+        right: 0;
+    }
+    .drawer-button:checked + .drawer-menu.mobile-left {
+        width: 85% !important;
+        left: 0;
+    }
+    .drawer-button:checked + .drawer-menu.mobile-right {
+        width: 85% !important;
+        right: 0;
+    }
+    .drawer-button:checked ~ .drawer-toggle {
+        -webkit-transform: rotate(-180deg);
+    }
+}
+@each $color, $hex in $all_colors {
+    .drawer-menu.#{$color} {
+        background-color: $hex;
+        color: #fff;
+        > li {
+            background-color: darken($hex, 5%);
+            border-color: darken($hex, 10%);
+            &:hover {
+                background-color: darken($hex, 10%);
+                border-color: darken($hex, 15%);
+            }
+        }
+        a {
+            color: #fff;
+        }
+    }
+    .drawer-toggle.#{$color} {
+        background-color: $hex;
+        &:hover {
+            background-color: darken($hex, 10%);
+        }
+    }
+}
+
