@@ -1,0 +1,59 @@
+@import "colors";
+
+@mixin label($color, $is_dark: true) {
+    $hover: darken($color, 8%);
+    $border: darken($color, 20%);
+    $border_hover: darken($border, 10%);
+
+    background-color: $color;
+    border-bottom: 2px solid $border;
+
+    @if $is_dark {
+        color: lighten($color, 50%);
+        text-shadow: 0 1px 1px darken($color, 30%);
+    }
+    @else {
+        color: darken($color, 50%);
+        text-shadow: 0 1px 1px lighten($color, 30%);
+    }
+    &:hover {
+        background-color: $hover;
+        border-bottom: 2px solid $border_hover;
+    }
+}
+
+.label {
+    $height: 1.2em;
+    display: inline-block;
+    padding: 0.2em 0.6em;
+    border-radius: 4px;
+    font-size: 80%;
+    line-height: $height;
+    height: $height;
+
+    @include label(lighten($default, 10%));
+
+    &.wide {
+        padding: 0.2em 1.2em;
+    }
+    &.boxed {
+        border-radius: 0;
+    }
+
+    @each $color, $hex in $all_colors {
+        &.label-#{$color} {
+            @include label(lighten($hex, 10%));
+        }
+    }
+    &.label-default {
+        @include label(#ccc, false);
+    }
+    &.label-dark {
+        @include label(#555, true);
+    }
+    // Yellow is harder to get right
+    &.label-yellow {
+        $_yellow: map-get($all_colors, 'yellow');
+        @include label(lighten($_yellow, 10%), false);
+    }
+}
