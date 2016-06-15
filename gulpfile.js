@@ -12,5 +12,7 @@ gulp.task('sass', function () {
     .pipe(minifyCss())
     .pipe(gulp.dest('dist/'));
 });
-
+gulp.task('sass:watch', function () {
+    gulp.watch('src/sass/*.scss', ['sass']);
+});
 gulp.task('default', ['sass']);
