@@ -56,4 +56,9 @@
         $_yellow: map-get($all_colors, 'yellow');
         @include label(lighten($_yellow, 10%), false);
     }
+    @each $color, $hex in $warning_colors {
+        &.label-#{$color} {
+            @include label($hex, true);
+        }
+    }
 }
