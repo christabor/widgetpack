@@ -90,6 +90,14 @@
     .sidebar p {
         font-size: 12px;
     }
+    .anchor {
+        display: none;
+    }
+    .section:hover .anchor {
+        display: inline-block;
+        text-decoration: none;
+        color: #ccc;
+    }
 
     @media handheld, screen and (max-width: 700px) {
         .container {
@@ -143,7 +151,13 @@
     <script>
         $(document).ready(function(){
             $('.loader').each(function(k, el){
-                $(this).load('examples/' + $(el).attr('id') + '.html');
+                var self = $(this);
+                var name = $(el).attr('id');
+                var htmlfile = 'examples/' + name + '.html';
+                self.load(htmlfile, function(){
+                    $('<a class="anchor" href="#' + name + '" name="' + name + '">#</a>')
+                        .prependTo(self.find('.section'));
+                });
             });
         });
     </script>
