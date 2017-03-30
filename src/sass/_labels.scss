@@ -24,14 +24,9 @@
 
 .label {
     $height: 1.2em;
-    display: inline-block;
     padding: 0.2em 0.6em;
     border-radius: 4px;
     font-size: 80%;
-    line-height: $height;
-    height: $height;
-
-    @include label(lighten($default, 10%));
 
     &.wide {
         padding: 0.2em 1.2em;
